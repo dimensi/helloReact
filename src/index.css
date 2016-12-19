@@ -1,0 +1,32 @@
+.none {
+	display: none;
+}
+
+.jumbotron-dark {
+	background-color: #202020;
+	color: white;
+}
+
+.jumbotron-no-margin {
+	margin: 0;
+}
+
+.form {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.news {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.panel-body > .btn {
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.btn + .panel {
+	margin-bottom: 0;
+}
