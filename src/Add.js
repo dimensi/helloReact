@@ -8,8 +8,7 @@ export default class Add extends Component {
 		this.state = {
 			valueAuthor: '',
 			valueText: '',
-			valueCheckBox: false,
-			btnIsDisabled: true
+			valueCheckBox: false
 		}
 	}
 
@@ -23,14 +22,11 @@ export default class Add extends Component {
 		e.target.reset();
 	}
 
-	checkButton = () => this.setState({
-		btnIsDisabled: this.btnIsDisabled
-	});
-
 	getValidationState = (value) => {
 		const length = value.length;
 		if (length > 2) return 'success';
 	}
+
 	FieldGroup({id, label, help, validation, ...props}) {
 		return (
 			<FormGroup controlId={id} validationState={validation}>
@@ -48,6 +44,8 @@ export default class Add extends Component {
 	handleCheckBox = () => this.setState({
 		valueCheckBox: !this.state.valueCheckBox
 	})
+
+	btnIsDisabled = () => !(this.state.valueAuthor.length > 0 && this.state.valueText.length > 0 && this.state.valueCheckBox);
 
 	render() {
 		return (
@@ -74,8 +72,7 @@ export default class Add extends Component {
 				<Checkbox checked={this.state.valueCheckBox} onChange={this.handleCheckBox}>
 					Согласен на размещение
 				</Checkbox>
-				<Button type="submit"
-				disabled={!(this.state.valueAuthor.length > 0 && this.state.valueText.length > 0 && this.state.valueCheckBox)}>
+				<Button type="submit" disabled={this.btnIsDisabled()}>
 					Разместить новость
 				</Button>
 			</form>
