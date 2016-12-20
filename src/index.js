@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css'
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import App from './containers/App';
 import './index.css';
 
+const store = configureStore();
+
 ReactDOM.render(
-	<h1>Привет</h1>,
+	<Provider store={store}>
+		<div className="app">
+			<App />
+		</div>
+	</Provider>,
 	document.getElementById('root')
 );
