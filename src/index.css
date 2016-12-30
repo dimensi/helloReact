@@ -6,12 +6,12 @@ body {
 	background-color: var(--blue);
 	color: white;
 }
+
 .row {
-	display: flex;
-	flex-wrap: wrap;
 	min-height: 1500px;
-	align-items: flex-start;
 	margin-top: 30px;
+	columns: 350px;
+	break-inside: avoid;
 }
 
 button {
@@ -29,6 +29,11 @@ button:hover {
 	color: black;
 }
 
+button:disabled {
+	color: gray;
+	background-color: darkgrey;
+}
+
 .load-more {
 	margin: 50px 0;
 	height: 1px;
@@ -36,14 +41,19 @@ button:hover {
 
 img {
 	max-width: 100%;
+	width: 100%;
+	object-fit: cover;
 }
 
 .img {
-	margin: 0.5em;
+	margin: 1em 0;
 	position: relative;
-	box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
 	background: white;
 	color: #020202;
+	border-radius: 1px;
+	display: inline-block;
+	width: 350px;
 }
 
 .img figcaption {
@@ -109,4 +119,36 @@ img {
 
 .controls {
 	padding: 10px;
+}
+
+.loading {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 25vw;
+	height: 25vh;
+	background-color: rgba(255, 255, 255, 0.95);
+	z-index: 100;
+	color: var(--blue);
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	font-size: 40px;
+	margin: auto;
+	border-radius: 5px;
+}
+
+.loading__text {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 30px;
+	text-transform: uppercase;
+}
+
+.loading .spinner {
+	position: relative;
 }

@@ -26,7 +26,10 @@ class App extends Component {
 					<button onClick={this.getPhotos} data-year={2015} disabled={fetching}>Забацай фотки 2015</button>
 					<button onClick={this.getPhotos} data-year={2016} disabled={fetching}>Забацай фотки 2016</button>
 				</div>
-				<p style={ {display: fetching ? 'block' : 'none'} }>Загрузка...</p>
+				<div className='loading' style={ {display: fetching ? 'flex' : 'none'} }>
+					<div className="loading__text">Загрузка...</div>
+					<div className="spinner"></div>
+					</div>
 				<Photos images={currentPhotos} getCurrentPhotos={getCurrentPhotos} fetching={fetching} />
 			</div>
 		);

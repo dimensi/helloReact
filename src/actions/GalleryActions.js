@@ -23,6 +23,7 @@ export function getPhotos(year) {
 			.then(r => r.json())
 			.then(r => {
 				const firstPhotos = r.slice(0,10);
+				console.log(firstPhotos);
 				dispatch({
 					type: PHOTOS_SUCCESS,
 					payload: r,

@@ -28,7 +28,8 @@ export default class Photo extends Component {
 			<figure
 			className={`img ${this.state.loaded ? 'loaded' : ''}`}
 			ref={ image => this.image = image }>
-			<div className="spinner"></div>
+				<div>
+					<div className="spinner"></div>
 				<a href={`http://danbooru.donmai.us${el.file_url}`} target="_blank">
 					<img 
 				src={`http://danbooru.donmai.us${el.file_url}`}
@@ -36,13 +37,14 @@ export default class Photo extends Component {
 				onLoad={this.handleImageLoaded}
 				style={size} />
 				</a>
-				<figcaption style={{width: size.width}}>
+				<figcaption>
 					<b>Created</b>: {new Date(el.created_at).toLocaleString()}, <br/>
 					<b>Artist</b>: {el.tag_string_artist}, <br/>
 					<b>Width</b>: {image_width}px, <b>Height</b>: {image_height}px, <br/>
 					<b>File Extension</b>: {el.file_ext}, <br/>
 					<b>Tags</b>: <div className="tags__row">{tags}</div>
 				</figcaption>
+				</div>
 			</figure>
 		);
 	}

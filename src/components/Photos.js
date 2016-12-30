@@ -21,8 +21,10 @@ export default class Photos extends Component {
 			}
 		) : null;
 		return (
-			<div className="row">
-				{photos}
+			<div>
+				<div className="row">
+					{photos}
+				</div>
 				<div className="load-more">
 					<Waypoint onEnter={this.getMorePhotos} />
 				</div>
