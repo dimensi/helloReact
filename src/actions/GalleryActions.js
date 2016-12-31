@@ -3,6 +3,7 @@ import {
 	PHOTOS_SUCCESS,
 	GET_CURRENT_PHOTOS
 } from '../constains/photos';
+import { FILTER_CHANGE, SHOW_ALL } from '../constains/filter';
 import qs from 'querystring';
 
 export function getPhotos(year) {
@@ -16,14 +17,13 @@ export function getPhotos(year) {
 		const dateNow = new Date().getFullYear();
 		const search = qs.stringify({
 			limit: 200,
-			tags: `age:${dateNow - year}y..${dateNow - year + 1}y`
+			tags: `pool:3020 age:${dateNow - year}y..${dateNow - year + 1}y`
 		});
 		console.log('http://danbooru.donmai.us/posts.json?' + search);
 		fetch('http://danbooru.donmai.us/posts.json?' + search)
 			.then(r => r.json())
 			.then(r => {
 				const firstPhotos = r.slice(0,10);
-				console.log(firstPhotos);
 				dispatch({
 					type: PHOTOS_SUCCESS,
 					payload: r,
@@ -49,5 +49,18 @@ export function getCurrentPhotos() {
 			currentNumber: firstPhotos.length ? currentNumber + 10 : currentNumber,
 			isLoaded: true
 		});
+	};
+}
+
+export function getNewFilter(filter) {
+	if (filter) {
+		return {
+			type: FILTER_CHANGE,
+			payload: filter
+		};
+	}
+	return {
+		type: FILTER_CHANGE,
+		payload: SHOW_ALL
 	};
 }

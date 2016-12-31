@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as GalleryActions from '../actions/GalleryActions';
 import Photos from '../components/Photos';
-
+import Input from '../components/Input';
 
 class App extends Component {
 
@@ -17,7 +17,7 @@ class App extends Component {
 	}
 	render() {
 		const { year, currentPhotos, fetching } = this.props.gallery;
-		const { getCurrentPhotos } = this.props.galleryActions;
+		const { getCurrentPhotos, getNewFilter  } = this.props.galleryActions;
 		return (
 			<div>
 				<div className="controls">
@@ -25,6 +25,7 @@ class App extends Component {
 					<button onClick={this.getPhotos} data-year={2014} disabled={fetching}>Забацай фотки 2014</button>
 					<button onClick={this.getPhotos} data-year={2015} disabled={fetching}>Забацай фотки 2015</button>
 					<button onClick={this.getPhotos} data-year={2016} disabled={fetching}>Забацай фотки 2016</button>
+					<Input changeFilter={getNewFilter} />
 				</div>
 				<div className='loading' style={ {display: fetching ? 'flex' : 'none'} }>
 					<div className="loading__text">Загрузка...</div>
@@ -36,9 +37,26 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = (store) => ({
-	gallery: store.gallery
-});
+const mapStateToProps = (store) => {
+	const filter = store.gallery.filter.toLowerCase();
+	if (filter === 'show_all') {
+		return {
+			gallery: store.gallery
+		};
+	}
+	const filtered = store.gallery.photos ? store.gallery.photos.filter(el => {
+		if (el.tag_string.includes(filter)) {
+			return true;
+		}
+		return false;
+	}) : null;
+	return {
+		gallery: {
+			...store.gallery,
+			currentPhotos: filtered
+		}
+	};
+};
 
 const mapDispatchToProps = (dispatch) => ({
 	galleryActions: bindActionCreators(GalleryActions, dispatch)

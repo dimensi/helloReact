@@ -10,8 +10,9 @@ body {
 .row {
 	min-height: 1500px;
 	margin-top: 30px;
-	columns: 350px;
-	break-inside: avoid;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
 }
 
 button {
@@ -46,7 +47,7 @@ img {
 }
 
 .img {
-	margin: 1em 0;
+	margin: 0.5em;
 	position: relative;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
 	background: white;
@@ -54,6 +55,20 @@ img {
 	border-radius: 1px;
 	display: inline-block;
 	width: 350px;
+	animation-name: fadeIn;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
 
 .img figcaption {
@@ -151,4 +166,12 @@ img {
 
 .loading .spinner {
 	position: relative;
+}
+
+input {
+	font-size: 16px;
+	padding: 5px 10px;
+	border: 1px solid;
+	border-radius: 3px;
+	border-color: var(--blue);
 }

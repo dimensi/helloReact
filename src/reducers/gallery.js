@@ -4,9 +4,12 @@ import {
 	GET_CURRENT_PHOTOS
 } from '../constains/photos';
 
+import { FILTER_CHANGE, SHOW_ALL } from '../constains/filter';
+
 export default function gallery(state = {
 	fetching: false,
-	currentNumber: 10
+	currentNumber: 10,
+	filter: SHOW_ALL
 }, action) {
 	switch (action.type) {
 		case PHOTOS_REQUEST:
@@ -28,6 +31,13 @@ export default function gallery(state = {
 				currentPhotos: action.payload,
 				currentNumber: action.currentNumber
 			};
+		case FILTER_CHANGE: {
+			return {
+				...state,
+				filter: action.payload,
+				currentNumber: 10
+			};
+		}
 		default:
 			return state;
 	}
