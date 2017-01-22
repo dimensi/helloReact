@@ -23,7 +23,8 @@ export default function gallery(state = {
 				...state,
 				photos: action.payload,
 				fetching: action.fetching,
-				currentPhotos: action.currentPhotos
+				currentPhotos: action.currentPhotos,
+				currentNumber: 10
 			};
 		case GET_CURRENT_PHOTOS:
 			return {

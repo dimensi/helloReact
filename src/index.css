@@ -143,8 +143,8 @@ img {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	width: 25vw;
-	height: 25vh;
+	width: 310px;
+	height: 155px;
 	background-color: rgba(255, 255, 255, 0.95);
 	z-index: 100;
 	color: var(--blue);

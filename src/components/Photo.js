@@ -30,9 +30,9 @@ export default class Photo extends Component {
 			ref={ image => this.image = image }>
 				<div>
 					<div className="spinner"></div>
-				<a href={`http://danbooru.donmai.us${el.file_url}`} target="_blank">
+				<a href={`http://safebooru.donmai.us${el.file_url}`} target="_blank">
 					<img 
-				src={`http://danbooru.donmai.us${el.file_url}`}
+				src={`http://safebooru.donmai.us.rsz.io${el.file_url}?width=350`}
 				alt={`Фото номер #${el.id} года ${new Date(el.created_at).getFullYear()}`}
 				onLoad={this.handleImageLoaded}
 				style={size} />

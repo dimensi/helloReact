@@ -19,8 +19,8 @@ export function getPhotos(year) {
 			limit: 200,
 			tags: `pool:3020 age:${dateNow - year}y..${dateNow - year + 1}y`
 		});
-		console.log('http://danbooru.donmai.us/posts.json?' + search);
-		fetch('http://danbooru.donmai.us/posts.json?' + search)
+		console.log('http://safebooru.donmai.us/posts.json?' + search);
+		fetch('http://safebooru.donmai.us/posts.json?' + search)
 			.then(r => r.json())
 			.then(r => {
 				const firstPhotos = r.slice(0,10);
